@@ -1,0 +1,57 @@
+:root {
+  /* Cores de fundo para seções */
+  --info-bg: #f0f4ff;
+  --info-border: #d0d8ff;
+  --info-text: #3451b2;
+
+  --form-bg: #fafafa;
+  --form-border: #eaeaea;
+
+  --actions-bg: #f9f9f9;
+  --actions-border: #eaeaea;
+
+  --help-bg: #f5f5f5;
+  --help-border: #e0e0e0;
+  --help-icon: #666;
+
+  --card-bg: #fff;
+  --card-border: #eaeaea;
+  --card-title: #1a1a1a;
+  --card-text: #444;
+
+  --counter-bg: #f0f8ff;
+  --counter-border: #d0e0ff;
+
+  --success-color: #2e7d32;
+  --success-bg: #f0f9f0;
+  --success-border: #d0e8d0;
+}
+
+html.dark {
+  /* Cores de fundo para seções no tema escuro */
+  --info-bg: #1a2548;
+  --info-border: #2a3a6d;
+  --info-text: #8ba3ff;
+
+  --form-bg: #1a1a1a;
+  --form-border: #333;
+
+  --actions-bg: #1a1a1a;
+  --actions-border: #333;
+
+  --help-bg: #1a1a1a;
+  --help-border: #333;
+  --help-icon: #999;
+
+  --card-bg: #222;
+  --card-border: #333;
+  --card-title: #eee;
+  --card-text: #bbb;
+
+  --counter-bg: #1a2548;
+  --counter-border: #2a3a6d;
+
+  --success-color: #81c784;
+  --success-bg: #1e3a1e;
+  --success-border: #2e5a2e;
+}
