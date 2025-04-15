@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "@radix-ui/themes/styles.css";
-import "./theme-variables.css";
 import { cookies } from "next/headers";
 import ClientThemeProvider from "./components/client-theme-provider";
 
