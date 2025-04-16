@@ -4,6 +4,7 @@ import "./globals.css";
 import "@radix-ui/themes/styles.css";
 import { cookies } from "next/headers";
 import ClientThemeProvider from "./components/client-theme-provider";
+import ThemeWrapper from "./components/theme-wrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,7 +34,9 @@ export default async function RootLayout({
     <html lang="en" className={theme === 'dark' ? 'dark' : 'light'}>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <ClientThemeProvider initialTheme={theme as 'light' | 'dark'}>
-          {children}
+          <ThemeWrapper>
+            {children}
+          </ThemeWrapper>
         </ClientThemeProvider>
       </body>
     </html>

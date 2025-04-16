@@ -2,6 +2,8 @@ import { Box, Button, Card, Container, Flex, Heading, Text, TextField, TextArea,
 import Link from 'next/link';
 import { cookies } from 'next/headers';
 import { submitForm, clearForm } from '../actions';
+import ClientThemeButton from '../components/client-theme-button';
+import ServerFormThemeWrapper from '../components/server-form-theme-wrapper';
 
 export default async function FormPage() {
 
@@ -63,9 +65,10 @@ export default async function FormPage() {
           <Flex justify="center" gap="3" mt="4">
             <form method="post" action="/api/toggle-theme">
               <Button type="submit" variant="soft">
-                Alternar para Tema {theme === 'light' ? 'Escuro' : 'Claro'}
+                Alternar para Tema {theme === 'light' ? 'Escuro' : 'Claro'} (Server)
               </Button>
             </form>
+            <ClientThemeButton />
             <form action={clearForm}>
               <Button type="submit" variant="soft" color="red">
                 Limpar Formulário
@@ -74,7 +77,8 @@ export default async function FormPage() {
           </Flex>
 
           <Box mt="2">
-            <Text size="1" align="center">Tema atual: {theme === 'light' ? 'claro' : 'escuro'}</Text>
+            <Text size="1" align="center">Tema atual (server-side): {theme === 'light' ? 'claro' : 'escuro'}</Text>
+            <ServerFormThemeWrapper />
           </Box>
 
           <Box mt="4">
@@ -90,6 +94,8 @@ export default async function FormPage() {
             </Callout.Root>
 
             <Box mt="2" pl="6">
+              <Text as="div" size="2" mb="1"><strong>Alternar para Tema (Server)</strong>: Usa uma rota de API para alternar o tema, recarregando a página.</Text>
+              <Text as="div" size="2" mb="1"><strong>Alternar para Tema</strong>: Usa JavaScript no cliente para alternar o tema sem recarregar a página.</Text>
               <Text as="div" size="2" mb="1"><strong>Limpar Campos</strong>: Limpa apenas os campos do formulário (botão reset padrão do HTML).</Text>
               <Text as="div" size="2"><strong>Limpar Formulário</strong>: Ação do servidor que redireciona para uma nova página, limpando todo o estado.</Text>
             </Box>
