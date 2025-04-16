@@ -32,7 +32,7 @@ export async function clearForm() {
   redirect('/form');
 }
 
-export async function toggleTheme(formData: FormData) {
+export async function toggleTheme() {
 
   // Get the current cookies
   const cookieStore = await cookies();
