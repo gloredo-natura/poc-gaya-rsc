@@ -3,8 +3,7 @@
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
-export async function submitForm(formData: FormData) {
-
+export async function submitForm(prevState: unknown, formData: FormData) {
   // Process form data
   const name = formData.get('name');
   const email = formData.get('email');
@@ -12,9 +11,15 @@ export async function submitForm(formData: FormData) {
 
   // Validate form data
   if (!name || !email || !message) {
-    // Just return without redirecting if validation fails
     console.log('Validation failed: All fields are required');
-    return;
+    return { status: 'error', message: 'Todos os campos são obrigatórios.' };
+  }
+
+  // Validate email format
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email as string)) {
+    console.log('Validation failed: Invalid email format');
+    return { status: 'error', message: 'Formato de email inválido.' };
   }
 
   // In a real app, you would save this data to a database
@@ -23,8 +28,12 @@ export async function submitForm(formData: FormData) {
   // Simulate a delay to show processing
   await new Promise(resolve => setTimeout(resolve, 500));
 
-  // Redirect to success page
-  redirect('/success');
+  // Return success message instead of redirecting
+  return {
+    status: 'success',
+    message: 'Formulário enviado com sucesso!',
+    data: { name, email, message }
+  };
 }
 
 export async function clearForm() {

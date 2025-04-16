@@ -1,9 +1,10 @@
-import { Box, Button, Card, Container, Flex, Heading, Text, TextField, TextArea, Callout } from '@radix-ui/themes';
+import { Box, Button, Card, Container, Flex, Heading, Text, Callout } from '@radix-ui/themes';
 import Link from 'next/link';
 import { cookies } from 'next/headers';
-import { submitForm, clearForm } from '../actions';
+import { clearForm } from '../actions';
 import ClientThemeButton from '../components/client-theme-button';
 import ServerFormThemeWrapper from '../components/server-form-theme-wrapper';
+import ServerFormWithFeedback from '../components/server-form-with-feedback';
 
 export default async function FormPage() {
 
@@ -38,29 +39,7 @@ export default async function FormPage() {
               Toda validação e processamento ocorre no servidor, sem JavaScript no cliente.
             </Callout.Text>
           </Callout.Root>
-          <form action={submitForm}>
-            <Flex direction="column" gap="4">
-              <Box>
-                <Text as="label" size="2" mb="1" htmlFor="name">Nome</Text>
-                <TextField.Root id="name" name="name" placeholder="Digite seu nome" required />
-              </Box>
-
-              <Box>
-                <Text as="label" size="2" mb="1" htmlFor="email">Email</Text>
-                <TextField.Root id="email" name="email" type="email" placeholder="Digite seu email" required />
-              </Box>
-
-              <Box>
-                <Text as="label" size="2" mb="1" htmlFor="message">Mensagem</Text>
-                <TextArea id="message" name="message" placeholder="Digite sua mensagem" required />
-              </Box>
-
-              <Flex gap="3">
-                <Button type="submit">Enviar</Button>
-                <Button type="reset" variant="soft" color="gray">Limpar Campos</Button>
-              </Flex>
-            </Flex>
-          </form>
+          <ServerFormWithFeedback />
 
           <Flex justify="center" gap="3" mt="4">
             <form method="post" action="/api/toggle-theme">
